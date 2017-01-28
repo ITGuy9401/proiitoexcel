@@ -7,12 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using NPOI.XSSF.UserModel;
+using NPOI.HSSF.UserModel;
+using NPOI.XWPF.UserModel;
+using NPOI.SS.UserModel;
+using NPOI.OpenXml4Net.OPC;
+using NPOI.Util;
+
 
 namespace Pro2ToExcelConverter
 {
     public partial class Form1 : Form
     {
-        private String fileContent = "";
+        private List<Point> bubblePoints = new List<Point>();
+        private List<Point> dewPoints = new List<Point>();
 
         public Form1()
         {
@@ -54,13 +63,127 @@ namespace Pro2ToExcelConverter
                 // Open the selected file to read.
                 System.IO.Stream fileStream = openFileDialog1.OpenFile();
 
+                //Resets the lists
+                bubblePoints = new List<Point>();
+                dewPoints = new List<Point>();
+
+                fileNameTextBox.Text = openFileDialog1.FileName;
+
                 using (System.IO.StreamReader reader = new System.IO.StreamReader(fileStream))
                 {
-                    // Read the first line from the file and write it the textbox.
-                    fileContent = reader.ReadToEnd();
+                    String[] plt = reader.ReadToEnd().Split('\n');
+                    Boolean reachedDewPoints = false;
+                    Boolean finishedReading = false;
+                    for (int i = 0; i < plt.Length && !finishedReading; i++)
+                    {
+                        String line = plt[i];
+                        if (!reachedDewPoints)
+                        {
+                            if (line.IndexOf("CURVE") != -1)
+                            {
+                                line = plt[++i];
+                                //System.out.println("Found " + stripAndTrim(line) + " Bubble Points");
+                                line = stripAndTrim(plt[++i]);
+                                do
+                                {
+                                    String[] split = line.Split(' ');
+                                    bubblePoints.Add(new Point(XmlConvert.ToDouble(split[0]), XmlConvert.ToDouble(split[1])));
+                                    line = stripAndTrim(plt[++i]);
+                                } while (line.IndexOf("MARKER") == -1);
+                                reachedDewPoints = true;
+                            }
+                        }
+                        else
+                        {
+                            if (line.IndexOf("CURVE") != -1)
+                            {
+                                line = plt[++i];
+                                //System.out.println("Found " + stripAndTrim(line) + " Dew Points");
+                                line = stripAndTrim(plt[++i]);
+                                do
+                                {
+                                    String[] split = line.Split(' ');
+                                    dewPoints.Add(new Point(XmlConvert.ToDouble(split[0]), XmlConvert.ToDouble(split[1])));
+                                    line = stripAndTrim(plt[++i]);
+                                } while (line.IndexOf("MARKER") == -1);
+                                finishedReading = true;
+                            }
+                        }
+                    }
+
                 }
                 fileStream.Close();
             }
+        }
+
+        private void convertButton_Click(object sender, EventArgs e)
+        {
+            if (bubblePoints.Count() > 0)
+            {
+                SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+                saveFileDialog1.Filter = "EXCEL 2007+ File |*.xlsx";
+                saveFileDialog1.Title = "Save the generated Excel File";
+                saveFileDialog1.ShowDialog();
+
+                // If the file name is not an empty string open it for saving.
+                if (saveFileDialog1.FileName != "")
+                {
+
+                    // Converts the data to Excel format
+                    IWorkbook wb = new XSSFWorkbook();
+                    ISheet sheet = wb.CreateSheet();
+                    IRow heading = sheet.CreateRow(0);
+                    heading.CreateCell(0).SetCellValue("Pressure/Temp");
+                    heading.CreateCell(1).SetCellValue("Bubble Point (X)");
+                    heading.CreateCell(2).SetCellValue("Dew Point (Y)");
+
+                    bubblePoints.Sort(delegate (Point a, Point b)
+                    {
+                        return a.TemperatureOrPressure.CompareTo(b.TemperatureOrPressure);
+                    });
+
+                    dewPoints.Sort(delegate (Point a, Point b)
+                    {
+                        return a.TemperatureOrPressure.CompareTo(b.TemperatureOrPressure);
+                    });
+
+
+                    for (int i = 0; i < bubblePoints.Count; i++)
+                    {
+                        IRow row = sheet.CreateRow(i + 1);
+                        ICell temp = row.CreateCell(0);
+                        temp.SetCellType(CellType.Numeric);
+                        temp.SetCellValue(bubblePoints.ElementAt(i).TemperatureOrPressure);
+
+                        ICell x = row.CreateCell(1);
+                        x.SetCellType(CellType.Numeric);
+                        x.SetCellValue(bubblePoints.ElementAt(i).Fraction);
+
+                        ICell y = row.CreateCell(2);
+                        y.SetCellType(CellType.Numeric);
+                        y.SetCellValue(dewPoints.ElementAt(i).Fraction);
+                    }
+
+                    // Saves the file via a FileStream created by the OpenFile method.
+                    System.IO.FileStream fs =
+                       (System.IO.FileStream)saveFileDialog1.OpenFile();
+                    wb.Write(fs);
+                    try
+                    {
+                        fs.Close();
+                    }
+                    catch (Exception ex) { }
+                    MessageBox.Show("File has been saved", "User Support");
+                }
+            } else
+            {
+                MessageBox.Show("You should first select a file", "User Support");
+            }
+        }
+
+        private String stripAndTrim(String data)
+        {
+            return data.Trim();
         }
     }
 }

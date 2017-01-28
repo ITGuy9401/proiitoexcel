@@ -8,3 +8,15 @@ C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter
 C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\obj\Debug\Pro2ToExcelConverter.csproj.GenerateResource.Cache
 C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\obj\Debug\Pro2ToExcelConverter.exe
 C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\obj\Debug\Pro2ToExcelConverter.pdb
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\bin\Debug\ICSharpCode.SharpZipLib.dll
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\bin\Debug\NPOI.dll
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\bin\Debug\NPOI.OOXML.dll
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\bin\Debug\NPOI.OpenXml4Net.dll
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\bin\Debug\NPOI.OpenXmlFormats.dll
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\bin\Debug\NPOI.xml
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\bin\Debug\NPOI.OOXML.xml
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\bin\Debug\NPOI.OpenXml4Net.xml
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\bin\Debug\Pro2ToExcelConverter.exe.manifest
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\bin\Debug\Pro2ToExcelConverter.application
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\obj\Debug\Pro2ToExcelConverter.exe.manifest
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\obj\Debug\Pro2ToExcelConverter.application
