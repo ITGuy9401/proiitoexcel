@@ -49,9 +49,14 @@
 					<descriptorRefs>
 						<descriptorRef>jar-with-dependencies</descriptorRef>
 					</descriptorRefs>
+
+					<archive>
+						<manifest>
+							<mainClass>eu.arcangelovicedomini.proiiexcel.Application</mainClass>
+						</manifest>
+					</archive>
 				</configuration>
 			</plugin>
-
 		</plugins>
 		<resources>
 			<resource>

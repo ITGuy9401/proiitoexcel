@@ -49,7 +49,7 @@ public class Application {
 						String[] split = line.split(" ");
 						bubblePoints.add(new Point(Double.parseDouble(split[0]), Double.parseDouble(split[1])));
 						line = stripAndTrim(plt.get(++i));
-					} while (line.indexOf("MARKER") != -1);
+					} while (line.indexOf("MARKER") == -1);
 					reachedDewPoints = true;
 				}
 			} else {
@@ -61,7 +61,7 @@ public class Application {
 						String[] split = line.split(" ");
 						dewPoints.add(new Point(Double.parseDouble(split[0]), Double.parseDouble(split[1])));
 						line = stripAndTrim(plt.get(++i));
-					} while (line.indexOf("MARKER") != -1);
+					} while (line.indexOf("MARKER") == -1);
 					finishedReading = true;
 				}
 			}
@@ -75,7 +75,7 @@ public class Application {
 		Workbook wb = new XSSFWorkbook();
 		Sheet sheet = wb.createSheet();
 		Row heading = sheet.createRow(0);
-		heading.createCell(0).setCellValue("Pressure");
+		heading.createCell(0).setCellValue("Pressure/Temp");
 		heading.createCell(1).setCellValue("Bubble Point (X)");
 		heading.createCell(2).setCellValue("Dew Point (Y)");
 
