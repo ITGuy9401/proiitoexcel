@@ -1,28 +1,32 @@
 package eu.arcangelovicedomini.proiiexcel;
 
-public class Point {
-	private Double firstColumn;
-	private Double secondColumn;
+public class Point implements Comparable<Point>{
+	private Double variablePressureOrTemperature;
+	private Double fraction;
 
-	public Point(Double firstColumn, Double secondColumn) {
-		this.firstColumn = firstColumn;
-		this.secondColumn = secondColumn;
+	public Point(Double fraction, Double variablePressureOrTemperature) {
+		this.variablePressureOrTemperature = variablePressureOrTemperature;
+		this.fraction = fraction;
 	}
 
-	public Double getFirstColumn() {
-		return firstColumn;
+	public Double getVariablePressureOrTemperature() {
+		return variablePressureOrTemperature;
 	}
 
-	public void setFirstColumn(Double firstColumn) {
-		this.firstColumn = firstColumn;
+	public void setVariablePressureOrTemperature(Double variablePressureOrTemperature) {
+		this.variablePressureOrTemperature = variablePressureOrTemperature;
 	}
 
-	public Double getSecondColumn() {
-		return secondColumn;
+	public Double getFraction() {
+		return fraction;
 	}
 
-	public void setSecondColumn(Double secondColumn) {
-		this.secondColumn = secondColumn;
+	public void setFraction(Double fraction) {
+		this.fraction = fraction;
 	}
 
+	public int compareTo(Point o) {
+		return variablePressureOrTemperature.compareTo(o.getVariablePressureOrTemperature());
+	}
+	
 }
