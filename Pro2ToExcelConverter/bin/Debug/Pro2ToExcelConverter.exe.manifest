@@ -4,7 +4,7 @@
   <description asmv2:iconFile="icon.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Pro2ToExcelConverter" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Pro2ToExcelConverter" version="1.0.0.0" publicKeyToken="9577979386F58A8A" language="neutral" processorArchitecture="msil" />
     <commandLine file="Pro2ToExcelConverter.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -104,13 +104,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Pro2ToExcelConverter.exe" size="79904">
-      <assemblyIdentity name="Pro2ToExcelConverter" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Pro2ToExcelConverter" version="1.0.0.0" publicKeyToken="9577979386F58A8A" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>T1w+Kpxc3bK96w3U/zpVq0rQdPb94WOcmE9GDljdZbM=</dsig:DigestValue>
+        <dsig:DigestValue>Q58sjWKXQofRPxzkwO24Y7bYrqIYEJs2fNL4wz8IvRY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
