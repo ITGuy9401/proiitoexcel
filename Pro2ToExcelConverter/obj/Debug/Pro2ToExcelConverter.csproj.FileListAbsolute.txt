@@ -1,0 +1,10 @@
+c:\users\arcangelo vicedomini\documents\visual studio 2015\Projects\Pro2ToExcelConverter\Pro2ToExcelConverter\bin\Debug\Pro2ToExcelConverter.exe.config
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\bin\Debug\Pro2ToExcelConverter.exe.config
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\bin\Debug\Pro2ToExcelConverter.exe
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\bin\Debug\Pro2ToExcelConverter.pdb
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\obj\Debug\Pro2ToExcelConverter.csprojResolveAssemblyReference.cache
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\obj\Debug\Pro2ToExcelConverter.Form1.resources
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\obj\Debug\Pro2ToExcelConverter.Properties.Resources.resources
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\obj\Debug\Pro2ToExcelConverter.csproj.GenerateResource.Cache
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\obj\Debug\Pro2ToExcelConverter.exe
+C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\obj\Debug\Pro2ToExcelConverter.pdb
