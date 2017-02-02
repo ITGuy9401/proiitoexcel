@@ -20,3 +20,6 @@ C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter
 C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\bin\Debug\Pro2ToExcelConverter.application
 C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\obj\Debug\Pro2ToExcelConverter.exe.manifest
 C:\Users\Arcangelo Vicedomini\Documents\GitHub\proiitoexcel\Pro2ToExcelConverter\obj\Debug\Pro2ToExcelConverter.application
+D:\OPEN_SOURCE\GITHUB\MIO\proiitoexcel\Pro2ToExcelConverter\bin\Debug\Pro2ToExcelConverter.exe.config
+D:\OPEN_SOURCE\GITHUB\MIO\proiitoexcel\Pro2ToExcelConverter\obj\Debug\Pro2ToExcelConverter.exe
+D:\OPEN_SOURCE\GITHUB\MIO\proiitoexcel\Pro2ToExcelConverter\obj\Debug\Pro2ToExcelConverter.pdb

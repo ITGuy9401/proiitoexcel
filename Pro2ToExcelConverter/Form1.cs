@@ -20,8 +20,8 @@ namespace Pro2ToExcelConverter
 {
     public partial class Form1 : Form
     {
-        private List<Point> bubblePoints = new List<Point>();
-        private List<Point> dewPoints = new List<Point>();
+
+        private Dictionary<String, List<Point>> points = new Dictionary<string, List<Point>>();
 
         public Form1()
         {
@@ -64,50 +64,29 @@ namespace Pro2ToExcelConverter
                 System.IO.Stream fileStream = openFileDialog1.OpenFile();
 
                 //Resets the lists
-                bubblePoints = new List<Point>();
-                dewPoints = new List<Point>();
+                points = new Dictionary<string, List<Point>>();
 
                 fileNameTextBox.Text = openFileDialog1.FileName;
 
                 using (System.IO.StreamReader reader = new System.IO.StreamReader(fileStream))
                 {
                     String[] plt = reader.ReadToEnd().Split('\n');
-                    Boolean reachedDewPoints = false;
-                    Boolean finishedReading = false;
-                    for (int i = 0; i < plt.Length && !finishedReading; i++)
+                    for (int i = 0; i < plt.Length; i++)
                     {
                         String line = plt[i];
-                        if (!reachedDewPoints)
+                        if (line.IndexOf("CURVE") != -1)
                         {
-                            if (line.IndexOf("CURVE") != -1)
+                            String title = line.Split('"')[1];
+                            line = plt[++i];
+                            line = stripAndTrim(plt[++i]);
+                            List<Point> buffer = new List<Point>();
+                            do
                             {
-                                line = plt[++i];
-                                //System.out.println("Found " + stripAndTrim(line) + " Bubble Points");
+                                String[] split = line.Split(' ');
+                                buffer.Add(new Point(XmlConvert.ToDouble(split[0]), XmlConvert.ToDouble(split[1])));
                                 line = stripAndTrim(plt[++i]);
-                                do
-                                {
-                                    String[] split = line.Split(' ');
-                                    bubblePoints.Add(new Point(XmlConvert.ToDouble(split[0]), XmlConvert.ToDouble(split[1])));
-                                    line = stripAndTrim(plt[++i]);
-                                } while (line.IndexOf("MARKER") == -1);
-                                reachedDewPoints = true;
-                            }
-                        }
-                        else
-                        {
-                            if (line.IndexOf("CURVE") != -1)
-                            {
-                                line = plt[++i];
-                                //System.out.println("Found " + stripAndTrim(line) + " Dew Points");
-                                line = stripAndTrim(plt[++i]);
-                                do
-                                {
-                                    String[] split = line.Split(' ');
-                                    dewPoints.Add(new Point(XmlConvert.ToDouble(split[0]), XmlConvert.ToDouble(split[1])));
-                                    line = stripAndTrim(plt[++i]);
-                                } while (line.IndexOf("MARKER") == -1);
-                                finishedReading = true;
-                            }
+                            } while (line.IndexOf("MARKER") == -1);
+                            points.Add(title, buffer);
                         }
                     }
 
@@ -118,7 +97,7 @@ namespace Pro2ToExcelConverter
 
         private void convertButton_Click(object sender, EventArgs e)
         {
-            if (bubblePoints.Count() > 0)
+            if (points.Count() > 0)
             {
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                 saveFileDialog1.Filter = "EXCEL 2007+ File |*.xlsx";
