@@ -114,6 +114,9 @@ namespace Pro2ToExcelConverter
                     IRow heading = sheet.CreateRow(0);
                     heading.CreateCell(0).SetCellValue("Pressure/Temp");
 
+                    List<int> sizes = new List<int>();
+                    int size = 0;
+
                     for (int i = 0; i < points.Count; i++)
                     {
                         points.ElementAt(i).Value.Sort(delegate (Point a, Point b)
@@ -121,10 +124,11 @@ namespace Pro2ToExcelConverter
                             return a.TemperatureOrPressure.CompareTo(b.TemperatureOrPressure);
                         });
                         heading.CreateCell(i + 1).SetCellValue(points.ElementAt(i).Key);
+                        sizes.Add(points.ElementAt(i).Value.Count);
                     }
+                    size = sizes.Min();
 
-
-                    for (int i = 0; i < points.ElementAt(0).Value.Count; i++)
+                    for (int i = 0; i < size; i++)
                     {
                         IRow row = sheet.CreateRow(i + 1);
 
@@ -134,7 +138,7 @@ namespace Pro2ToExcelConverter
 
                         for (int j = 0; j < points.Count; j++)
                         {
-                            ICell x = row.CreateCell(i+1);
+                            ICell x = row.CreateCell(j+1);
                             x.SetCellType(CellType.Numeric);
                             x.SetCellValue(points.ElementAt(j).Value.ElementAt(i).Fraction);
                         }
