@@ -97,7 +97,7 @@ namespace Pro2ToExcelConverter
 
         private void convertButton_Click(object sender, EventArgs e)
         {
-            if (points.Count() > 0)
+            if (points.Count > 0)
             {
                 SaveFileDialog saveFileDialog1 = new SaveFileDialog();
                 saveFileDialog1.Filter = "EXCEL 2007+ File |*.xlsx";
@@ -113,34 +113,32 @@ namespace Pro2ToExcelConverter
                     ISheet sheet = wb.CreateSheet();
                     IRow heading = sheet.CreateRow(0);
                     heading.CreateCell(0).SetCellValue("Pressure/Temp");
-                    heading.CreateCell(1).SetCellValue("Bubble Point (X)");
-                    heading.CreateCell(2).SetCellValue("Dew Point (Y)");
 
-                    bubblePoints.Sort(delegate (Point a, Point b)
+                    for (int i = 0; i < points.Count; i++)
                     {
-                        return a.TemperatureOrPressure.CompareTo(b.TemperatureOrPressure);
-                    });
+                        points.ElementAt(i).Value.Sort(delegate (Point a, Point b)
+                        {
+                            return a.TemperatureOrPressure.CompareTo(b.TemperatureOrPressure);
+                        });
+                        heading.CreateCell(i + 1).SetCellValue(points.ElementAt(i).Key);
+                    }
 
-                    dewPoints.Sort(delegate (Point a, Point b)
-                    {
-                        return a.TemperatureOrPressure.CompareTo(b.TemperatureOrPressure);
-                    });
 
-
-                    for (int i = 0; i < bubblePoints.Count; i++)
+                    for (int i = 0; i < points.ElementAt(0).Value.Count; i++)
                     {
                         IRow row = sheet.CreateRow(i + 1);
+
                         ICell temp = row.CreateCell(0);
                         temp.SetCellType(CellType.Numeric);
-                        temp.SetCellValue(bubblePoints.ElementAt(i).TemperatureOrPressure);
+                        temp.SetCellValue(points.ElementAt(0).Value.ElementAt(0).TemperatureOrPressure);
 
-                        ICell x = row.CreateCell(1);
-                        x.SetCellType(CellType.Numeric);
-                        x.SetCellValue(bubblePoints.ElementAt(i).Fraction);
-
-                        ICell y = row.CreateCell(2);
-                        y.SetCellType(CellType.Numeric);
-                        y.SetCellValue(dewPoints.ElementAt(i).Fraction);
+                        for (int j = 0; j < points.Count; j++)
+                        {
+                            ICell x = row.CreateCell(i+1);
+                            x.SetCellType(CellType.Numeric);
+                            x.SetCellValue(points.ElementAt(j).Value.ElementAt(i).Fraction);
+                        }
+                        
                     }
 
                     // Saves the file via a FileStream created by the OpenFile method.

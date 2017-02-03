@@ -7,14 +7,14 @@
     <framework targetVersion="4.5.2" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Pro2ToExcelConverter.exe.manifest" size="7484">
+    <dependentAssembly dependencyType="install" codebase="Pro2ToExcelConverter.exe.manifest" size="7416">
       <assemblyIdentity name="Pro2ToExcelConverter.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>6vNKN3gKwSmAmqXqH4Ay8P5lRG0r1GShNVBGOVSx3jM=</dsig:DigestValue>
+        <dsig:DigestValue>p6H+FBh2dsUS/Obrto5Sv2cqe15CJkw8EArtwpoflm8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
